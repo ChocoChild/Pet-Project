@@ -115,4 +115,25 @@ body {
   border: none;
   background: transparent;
   transform: translate(60px, -137px);
+} 
+
+/* Часы */
+
+.clock {
+  width: 400px;
+  height: 120px;
+  margin-left: 20px;
+  margin-top: 20px;
+  border: solid 2px #036758;
+  background: rgb(4, 213, 213);
+}
+
+.time {
+  margin-top: 10px;
+  display: block;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 100px;
+  color: rgb(6, 107, 10);
 }

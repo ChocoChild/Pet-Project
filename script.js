@@ -1,6 +1,7 @@
-let inputForm = document.querySelector('.inputs__form');
-let newInputWrapper = document.querySelector('#div');
+const inputForm = document.querySelector('.inputs__form');
+const newInputWrapper = document.querySelector('#div');
 const arrayOfTodo = JSON.parse(localStorage.getItem('arrayOfTodo')) || [];
+let editArrayOfTodo = [];
 
 
 function addItem(e) {
@@ -22,7 +23,7 @@ function renderTodo(todo, newPost) {
                     <button class="button-1">
                     <img class="add__pencil" src="./img/main/pencil.png" alt="pencil">
                     </button>
-                    <button onclick="removeIndex(${index})" class="button">
+                    <button onclick="removeTodo(${index})" class="button">
                     <img class="add__garbidge" src="./img/main/musor.png" alt="garbidge" alt="musor">
                     </button>
                 </div>`
@@ -31,32 +32,32 @@ function renderTodo(todo, newPost) {
 
 inputForm.addEventListener('submit', addItem);
 renderTodo(arrayOfTodo, newInputWrapper);
-let editButton = document.querySelector('.button-1');
-let removeButton = document.querySelector('.button');
 
-// function removeIndex(index) {
-//     let array = arrayOfTodo;
-//     array.splice(index, 1);
-//     localStorage.setItem('arrayOfTodo', JSON.stringify(arrayOfTodo));
-// }
-
-function editItem(index) {
-    console.log(index);
-}
-
-function removeIndex(index) {
-    console.log(index);
+function removeTodo(index) {;
     let i = 0;
     let array = arrayOfTodo;
     if (i == index) {
         array.splice(i, 1);
         localStorage.setItem('arrayOfTodo', JSON.stringify(arrayOfTodo));
-        console.log(arrayOfTodo);
     } else {
         array.splice(index, 1);
         localStorage.setItem('arrayOfTodo', JSON.stringify(arrayOfTodo));
-        console.log(index);
     }
 }
 
+// Добавление часов
+function clock() {
+    let time = document.querySelector('.time');
+    let clock = new Date();
+    let hours = clock.getHours();
+    let minutes = clock.getMinutes();
+    let seconds = clock.getSeconds();
+    
+    if(hours < 10) hours = '0' + hours;
+    if(minutes < 10) minutes = '0' + minutes;
+    if(seconds < 10) seconds = '0' + seconds;
+    
+    time.textContent = `${hours}:${minutes}:${seconds}`;
+}
+setInterval(clock, 1000);
 
