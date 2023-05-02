@@ -61,3 +61,81 @@ function clock() {
 }
 setInterval(clock, 1000);
 
+// Добавление аудиоплеера
+const player = document.querySelector('.player');
+const prevBtn = document.querySelector('.button-prev');
+const playBtn = document.querySelector('.button-play');
+const pauseBtn = document.querySelector('.button-pause');
+const nextBtn = document.querySelector('.button-next');
+const audio = document.querySelector('.audio');
+const progressContainer = document.querySelector('.progress__container');
+const progress = document.querySelector('.progress');
+const title = document.querySelector('.song__title');
+
+const songs = ['MiyaGi & Andy Panda - Minor', 'MiyaGi & Andy Panda - Там Ревели Горы', 'Miyagi & Andy Panda - Патрон']
+
+let songIndex = 0;
+
+function loadSong(song) {
+    title.innerHTML = song
+    audio.src = `audio/${song}.mp3`;
+}
+
+loadSong(songs[songIndex]);
+
+function playSong() {
+    audio.play();
+}
+
+function pauseSong() {
+    audio.pause();
+}
+
+playBtn.addEventListener('click', () => {
+    playSong();
+})
+
+pauseBtn.addEventListener('click', () => {
+    pauseSong();
+})
+
+function nextSong() {
+    songIndex++
+    if (songIndex > songs.length - 1) {
+        songIndex = 0;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+nextBtn.addEventListener('click', nextSong);
+
+function prevSong() {
+    songIndex--;
+    if(songIndex < 0) {
+        songIndex = songs.length - 1;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+prevBtn.addEventListener('click', prevSong);
+
+function updateProgress(e) {
+    const {duration, currentTime} = e.srcElement;
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+}
+
+audio.addEventListener('timeupdate', updateProgress);
+
+
+function setProgress(e) {
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+
+    audio.currentTime = (clickX / width) * duration;
+}
+
+progressContainer.addEventListener('click', setProgress)

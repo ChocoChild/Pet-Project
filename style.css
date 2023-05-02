@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 600px;
   height: 100%;
   margin: auto;
 }
@@ -25,7 +25,6 @@ body {
 }
 
 .wrapper__title {
-  margin-top: 100px;
   text-align: center;
 
   font-size: 80px;
@@ -119,21 +118,92 @@ body {
 
 /* Часы */
 
+.dlc {
+  display: block;
+  width: 500px;
+}
+
 .clock {
   width: 400px;
   height: 120px;
   margin-left: 20px;
   margin-top: 20px;
-  border: solid 2px #036758;
-  background: rgb(4, 213, 213);
+  border-radius: 10px;
+  background: rgb(0, 118, 118);
 }
 
 .time {
   margin-top: 10px;
+  padding-top: 15px;
   display: block;
   justify-content: center;
   text-align: center;
 
   font-size: 100px;
-  color: rgb(6, 107, 10);
+  color: rgb(0, 199, 7);
+}
+
+/* Плеер */
+
+.player {
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 300px;
+  height: 110px;
+  background: rgb(0, 118, 118);
+  border-radius: 10px;
+}
+
+.song__title {
+  padding-top: 15px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.progress__container {
+  margin-top: 10px;
+  margin-left: 9px;
+  background: #ffcd5b;
+  border-radius: 5px;
+  width: 280px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.progress {
+  background: #d59504;
+  border-radius: 5px;
+  height: 6px;
+}
+
+.button-prev {
+  position: absolute;
+  bottom: 5px;
+  left: 50px;
+}
+
+.button-play {
+  position: absolute;
+  bottom: 5px;
+  left: 108px;
+}
+
+.button-pause {
+  position: absolute;
+  bottom: 5px;
+  left: 159px;
+}
+
+.button-next {
+  position: absolute;
+  bottom: 5px;
+  left: 210px;
+}
+
+.button-pointer {
+  cursor: pointer;
 }
